@@ -6,9 +6,10 @@ ruby '2.6.6'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form'
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
+gem 'rails', '~> 6.0.3.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
