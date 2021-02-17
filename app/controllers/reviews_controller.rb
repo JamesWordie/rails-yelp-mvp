@@ -1,28 +1,27 @@
 class ReviewsController < ApplicationController
+  before_action :find_restaurant, only: [:new, :create]
+
   def new
-    @restaurant = Restaurant.find(params[:restaurant_id]) # restaurant for the form
-    @review = Review.new # empty review for the form
+    # @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
   end
 
   def create
     @review = Review.new(strong_params)
-    @restaurant = Restaurant.find(params[:restaurant_id]) # restaurant for the review
+    # @restaurant = Restaurant.find(params[:restaurant_id])
     @review.restaurant = @restaurant
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
-      render(:new) # render the new.html.erb
+      render(:new)
     end
   end
 
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy # when this runs, the review is killed in the DB, but not in RAM
-    @restaurant = @review.restaurant
-    redirect_to restaurant_path(@restaurant)
-  end
-
   private
+
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
 
   def strong_params
     params.require(:review).permit(:content)

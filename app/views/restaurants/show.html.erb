@@ -7,4 +7,16 @@
   <p><%= @restaurant.phone_number %></p>
   <p><%= @restaurant.category %></p>
 
+  <br>
+  <br>
+  <h2>Reviews</h2>
+    <% @restaurant.reviews.each do |review| %>
+      <p> <%= review.content %></p>
+      <p><strong>Rating:</strong> <%= review.rating %></p>
+      <br>
+    <% end %>
+  <br>
+  <br>
+  <%= link_to "New Review", new_restaurant_review_path(@restaurant) %>
+
 </div>
